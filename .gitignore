@@ -1,7 +1,3 @@
 *.pbxuser
 *.perspectivev3
-objectivec/jpeg2moro/build
-ruby/scripts/*.dat
-ruby/scripts/*.png
-ruby/scripts/*.jpg
-ruby/pkg
+build
