@@ -47,12 +47,17 @@
 	
 	width = NSSwapLong(*(unsigned long *)bytes);
 	height = NSSwapLong(*(unsigned long *)(bytes + 4));
-
-	sscanf((char *)(bytes + 8), "%c%c%c%c%c%c%c%c",
-		  (char *)&colorType, &imageSampleDepth, &imageCompressionMethod, &imageInterlaceMethod,
-		  &alphaSampleDepth, &alphaCompressionMethod, &alphaFilterMethod, &alphaInterlaceMethod);
 	
-	LOG(@"size: (%d,%d) colorType:%d alphaSampleDepth:%d", width, height, colorType, alphaSampleDepth);
+	colorType              = bytes[8];
+	imageSampleDepth       = bytes[9];
+	imageCompressionMethod = bytes[10];
+	imageInterlaceMethod   = bytes[11];
+	alphaSampleDepth       = bytes[12];
+	alphaCompressionMethod = bytes[13];
+	alphaFilterMethod      = bytes[14];
+	alphaInterlaceMethod   = bytes[15];
+	
+	LOG(@"size: (%d,%d) colorType:%d alphaSampleDepth:%d alphaCompressionMethod:%d", width, height, colorType, alphaSampleDepth, alphaCompressionMethod);
 }
 
 @end
