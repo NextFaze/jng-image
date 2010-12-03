@@ -7,8 +7,8 @@ https://github.com/2moro/jng-image
 
 JNGImage reads images in JNG format, and converts them to a UIImage.
 
-http://en.wikipedia.org/wiki/JPEG_Network_Graphics
-http://www.libpng.org/pub/mng/spec/jng.html
+- http://en.wikipedia.org/wiki/JPEG_Network_Graphics
+- http://www.libpng.org/pub/mng/spec/jng.html
 
 == SYNOPSIS
 
