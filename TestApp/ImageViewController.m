@@ -45,8 +45,16 @@
 
 - (void)setImage {
 	TestImage *testImage = [images objectAtIndex:currentImage];
-	JNGImage *jng = [JNGImage imageNamed:testImage.name];
-	UIImage *img = [jng image];
+	UIImage *img = nil;
+	
+	if([[testImage.name substringFromIndex:[testImage.name length] - 3] isEqualToString:@"jng"]) {
+		JNGImage *jng = [JNGImage imageNamed:testImage.name];
+		img = [jng image];
+		labelInfo.text = [self imageInfo:jng];
+	} else {
+		img = [UIImage imageNamed:testImage.name];
+		labelInfo.text = nil;
+	}
 	CGSize vsize = self.view.frame.size;
 	int width = vsize.width - 40;
 	int height = img.size.height * width / img.size.width;
@@ -55,7 +63,6 @@
 	imageView.center = CGPointMake(vsize.width / 2, vsize.height / 2);
 	imageView.image = img;
 	labelFile.text = testImage.name;
-	labelInfo.text = [self imageInfo:jng];
 }
 
 - (IBAction)reloadImage:(id)sender {

@@ -134,12 +134,12 @@ static JNGImageCache *cache = nil;
     return imageWithAlpha;
 }
 
-// read jng2moro format
+// read JNG format
 // sets self.image and self.header
 - (void)readData:(NSData *)data {
 	
 	NSError *error = nil;
-	JNGImageParser *parser = [(JNGImageParser *)[JNGImageParser alloc] initWithData:data];
+	JNGImageParser *parser = [[(JNGImageParser *)[JNGImageParser alloc] initWithData:data] autorelease];
 	[parser parse:&error];
 		
 	// get alpha data
@@ -151,16 +151,42 @@ static JNGImageCache *cache = nil;
 
 	header = [[parser header] retain];  // retain header information
 	
-	[parser release];
-
 	if(!(jpegData1 || jpegData2)) {
 		// no jpeg data found - can't create an image
 		return;
 	}
 	
 	// use 12 bit (jpegData2) in preference (higher quality)
+	// TODO: does UIImage recognise 12 bit jpeg?
 	UIImage *img = [UIImage imageWithData:jpegData2 ? jpegData2 : jpegData1];
 
+	// UIImage doesn't perform gamma correction etc on pngs, so this part is pointless
+	/*
+	// convert to PNG
+	NSData *imgPng = UIImagePNGRepresentation(img);
+
+	// parse image as png format
+	JNGImagePNG *png = [[JNGImagePNG alloc] init];
+	JNGImageParser *parser2 = [[[JNGImageParser alloc] initWithData:imgPng] autorelease];
+	[parser2 parse:nil];
+
+	// add all the chunks to png
+	for(JNGImageChunk *chunk in parser2.chunks) {
+		[png addChunk:chunk];
+	}
+	// now add ancillary chunks from the JNG to the png (gAMA, etc)
+	for(JNGImageChunk *chunk in parser.chunks) {
+		if([chunk isAncillary]) {
+			[png addChunk:chunk];
+		}
+	}
+	LOG(@"png: %@", png);
+
+	// convert back to a UIImage
+	img = [UIImage imageWithData:[png data]];
+	[png release];
+	 */
+	
 	if(hasAlpha) {
 		// image contains alpha data.
 		// apply alpha channel
@@ -171,17 +197,17 @@ static JNGImageCache *cache = nil;
 
 		if([alphaIDAT count] > 0) {
 			// convert alpha data (IDAT chunk) to png image
-			JNGImagePNG *png = [[JNGImagePNG alloc] init];
-			png.colorType = JNGImagePNGColorTypeGrayscale;
-			png.width = header.width;
-			png.height = header.height;
-			png.bitDepth = header.alphaSampleDepth;
+			JNGImagePNG *pngAlpha = [[JNGImagePNG alloc] init];
+			pngAlpha.colorType = JNGImagePNGColorTypeGrayscale;
+			pngAlpha.width = header.width;
+			pngAlpha.height = header.height;
+			pngAlpha.bitDepth = header.alphaSampleDepth;
 			
 			for(JNGImageChunk *chunk in alphaIDAT) {
-				[png addChunk:chunk];
+				[pngAlpha addChunk:chunk];
 			}
-			alphaData = [png data];
-			[png release];
+			alphaData = [pngAlpha data];
+			[pngAlpha release];
 		}
 		else {
 			// else alpha data is jpeg format

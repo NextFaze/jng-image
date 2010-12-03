@@ -42,4 +42,13 @@
 	return crc32(0, [dat bytes], [dat length]);	
 }
 
+- (BOOL)isAncillary {
+	return ![self isCritical];
+}
+
+- (BOOL)isCritical {
+	const char *bytes = [name UTF8String];
+	return (bytes && bytes[0] >= 'A' && bytes[0] <= 'Z') ? YES : NO;
+}
+
 @end

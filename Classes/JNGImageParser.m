@@ -6,11 +6,10 @@
 //  Copyright 2010 2moro mobile. All rights reserved.
 //
 
+#import "JNGImagePNG.h"
 #import "JNGImageParser.h"
 #import "JNGImageChunk.h"
 #import "zlib.h"
-
-#define JngImageSignature {0x8b,0x4a,0x4e,0x47,0x0d,0x0a,0x1a,0x0a}
 
 @implementation JNGImageParser
 
@@ -92,9 +91,13 @@
 }
 
 // return true if signature is ok
+// (allow jng or png)
 - (BOOL)testSignature {
-	unsigned char signature[8] = JngImageSignature;
-	return ([data length] >= 8 && !memcmp([data bytes], signature, 8)) ? YES : NO;
+	unsigned char signature1[8] = PNGImageSignature;
+	unsigned char signature2[8] = JNGImageSignature;
+	int cmp1 = memcmp([data bytes], signature1, 8);
+	int cmp2 = memcmp([data bytes], signature2, 8);
+	return ([data length] >= 8 && (!cmp1 || !cmp2)) ? YES : NO;
 }
 
 // TODO: return error objects
@@ -137,15 +140,14 @@
 		unsigned long crc = NSSwapLong(*(unsigned long *)ptr);
 		ptr += 4;
 		
-		LOG(@"chunk name: %@", name);
-		LOG(@"chunk length: %ld", len);
-				
 		JNGImageChunk *chunk = [[JNGImageChunk alloc] init];
 		chunk.name = name;
 		chunk.crc = crc;
 		chunk.data = dat;
 		[chunkList addObject:chunk];
 
+		LOG(@"chunk %@, %d bytes, %@", chunk.name, chunk.data.length, [chunk isCritical] ? @"critical" : @"ancillary");
+		
 		// crc check
 		unsigned long actualCrc = [chunk calculateCrc];
 		[chunk release];

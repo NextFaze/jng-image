@@ -23,4 +23,7 @@
 
 - (unsigned long)calculateCrc;
 
+- (BOOL)isAncillary;
+- (BOOL)isCritical;
+
 @end
