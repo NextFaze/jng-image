@@ -91,6 +91,14 @@
 		49BC645B12A7CDFD00B11338 /* TGPA1S.jng in Resources */ = {isa = PBXBuildFile; fileRef = 49BC641912A7CDFD00B11338 /* TGPA1S.jng */; };
 		49BC645C12A7CDFD00B11338 /* TGPN0L.jng in Resources */ = {isa = PBXBuildFile; fileRef = 49BC641A12A7CDFD00B11338 /* TGPN0L.jng */; };
 		49BC645D12A7CDFD00B11338 /* TGPN0S.jng in Resources */ = {isa = PBXBuildFile; fileRef = 49BC641B12A7CDFD00B11338 /* TGPN0S.jng */; };
+		49F4F4C112A8EE330074B0A6 /* JNGImageChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F18001129F5D8000E923C3 /* JNGImageChunk.m */; };
+		49F4F4C312A8EE340074B0A6 /* JNGImageChunkJHDR.m in Sources */ = {isa = PBXBuildFile; fileRef = 4976DF5812A7BBC300F8E6A8 /* JNGImageChunkJHDR.m */; };
+		49F4F4C412A8EE350074B0A6 /* JNGImageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F18013129F60D100E923C3 /* JNGImageParser.m */; };
+		49F4F4C512A8EE360074B0A6 /* JNGImagePNG.m in Sources */ = {isa = PBXBuildFile; fileRef = 4976DE7012A7A38300F8E6A8 /* JNGImagePNG.m */; };
+		49F4F4CE12A8EEA20074B0A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F4CD12A8EEA20074B0A6 /* main.m */; };
+		49F4F4F012A8F1A40074B0A6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F4F4EF12A8F1A40074B0A6 /* libz.dylib */; };
+		49F4F50412A8F2350074B0A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F4F50312A8F2350074B0A6 /* Foundation.framework */; };
+		49F4F50812A8F26D0074B0A6 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F4F50712A8F26D0074B0A6 /* CoreFoundation.framework */; };
 		B5F17FD6129F59C000E923C3 /* JNGImage.h in Headers */ = {isa = PBXBuildFile; fileRef = B5F17FD4129F59C000E923C3 /* JNGImage.h */; };
 		B5F17FD7129F59C000E923C3 /* JNGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F17FD5129F59C000E923C3 /* JNGImage.m */; };
 		B5F17FF4129F5A8B00E923C3 /* JNGImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = B5F17FF2129F5A8B00E923C3 /* JNGImageCache.h */; };
@@ -194,6 +202,12 @@
 		49BC641A12A7CDFD00B11338 /* TGPN0L.jng */ = {isa = PBXFileReference; lastKnownFileType = file; path = TGPN0L.jng; sourceTree = "<group>"; };
 		49BC641B12A7CDFD00B11338 /* TGPN0S.jng */ = {isa = PBXFileReference; lastKnownFileType = file; path = TGPN0S.jng; sourceTree = "<group>"; };
 		49BC649612A7D14000B11338 /* README.rdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.rdoc; sourceTree = "<group>"; };
+		49F4F4CC12A8EE660074B0A6 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		49F4F4CD12A8EEA20074B0A6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		49F4F4EF12A8F1A40074B0A6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		49F4F4F612A8F1D90074B0A6 /* jnginfo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jnginfo_Prefix.pch; sourceTree = "<group>"; };
+		49F4F50312A8F2350074B0A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		49F4F50712A8F26D0074B0A6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		B5F17FD4129F59C000E923C3 /* JNGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JNGImage.h; path = Classes/JNGImage.h; sourceTree = "<group>"; };
 		B5F17FD5129F59C000E923C3 /* JNGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JNGImage.m; path = Classes/JNGImage.m; sourceTree = "<group>"; };
 		B5F17FF2129F5A8B00E923C3 /* JNGImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JNGImageCache.h; path = Classes/JNGImageCache.h; sourceTree = "<group>"; };
@@ -232,6 +246,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		49F4F4BB12A8EE020074B0A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49F4F4F012A8F1A40074B0A6 /* libz.dylib in Frameworks */,
+				49F4F50412A8F2350074B0A6 /* Foundation.framework in Frameworks */,
+				49F4F50812A8F26D0074B0A6 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5F18064129F656C00E923C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -289,12 +313,16 @@
 				BD849B6C0F8921BB00EB1682 /* UnitTests */,
 				08FB77AEFE84172EC02AAC07 /* Source */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
+				49F4F4CB12A8EE660074B0A6 /* jnginfo */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				BD80A6F10F8C87A60067878C /* UnitTest-Info.plist */,
 				BD80A79E0F8D3B310067878C /* RunIPhoneUnitTest.sh */,
 				B5F18068129F656C00E923C3 /* TestApp-Info.plist */,
 				4976DEE512A7B42100F8E6A8 /* libz.dylib */,
+				49F4F4EF12A8F1A40074B0A6 /* libz.dylib */,
+				49F4F50312A8F2350074B0A6 /* Foundation.framework */,
+				49F4F50712A8F26D0074B0A6 /* CoreFoundation.framework */,
 			);
 			name = "jng-image";
 			sourceTree = "<group>";
@@ -375,6 +403,16 @@
 			path = samples;
 			sourceTree = "<group>";
 		};
+		49F4F4CB12A8EE660074B0A6 /* jnginfo */ = {
+			isa = PBXGroup;
+			children = (
+				49F4F4F612A8F1D90074B0A6 /* jnginfo_Prefix.pch */,
+				49F4F4CD12A8EEA20074B0A6 /* main.m */,
+				49F4F4CC12A8EE660074B0A6 /* README */,
+			);
+			path = jnginfo;
+			sourceTree = "<group>";
+		};
 		B5F1806C129F658400E923C3 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +484,21 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		49F4F4BC12A8EE020074B0A6 /* jnginfo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49F4F4BF12A8EE290074B0A6 /* Build configuration list for PBXNativeTarget "jnginfo" */;
+			buildPhases = (
+				49F4F4BA12A8EE020074B0A6 /* Sources */,
+				49F4F4BB12A8EE020074B0A6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jnginfo;
+			productName = jnginfo;
+			productType = "com.apple.product-type.tool";
+		};
 		B5F18065129F656C00E923C3 /* TestApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5F1806B129F656D00E923C3 /* Build configuration list for PBXNativeTarget "TestApp" */;
@@ -526,6 +579,7 @@
 				D2AAC07D0554694100DB518D /* jng-image */,
 				BD80A3A10F894C7F0067878C /* UnitTest */,
 				B5F18065129F656C00E923C3 /* TestApp */,
+				49F4F4BC12A8EE020074B0A6 /* jnginfo */,
 			);
 		};
 /* End PBXProject section */
@@ -634,6 +688,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		49F4F4BA12A8EE020074B0A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49F4F4C112A8EE330074B0A6 /* JNGImageChunk.m in Sources */,
+				49F4F4C312A8EE340074B0A6 /* JNGImageChunkJHDR.m in Sources */,
+				49F4F4C412A8EE350074B0A6 /* JNGImageParser.m in Sources */,
+				49F4F4C512A8EE360074B0A6 /* JNGImagePNG.m in Sources */,
+				49F4F4CE12A8EEA20074B0A6 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5F18063129F656C00E923C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -751,6 +817,54 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.1;
+			};
+			name = Release;
+		};
+		49F4F4BD12A8EE030074B0A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = jnginfo/jnginfo_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = jnginfo;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		49F4F4BE12A8EE030074B0A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = jnginfo;
+				SDKROOT = macosx10.6;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -886,6 +1000,15 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49F4F4BF12A8EE290074B0A6 /* Build configuration list for PBXNativeTarget "jnginfo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49F4F4BD12A8EE030074B0A6 /* Debug */,
+				49F4F4BE12A8EE030074B0A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

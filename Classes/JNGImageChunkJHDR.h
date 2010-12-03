@@ -15,18 +15,33 @@ typedef enum {
 	JNGImageColorTypeColorAlpha = 14
 } JNGImageColorType;
 
+typedef enum {
+	JNGImageInterlaceMethodSequential  = 0,
+	JNGImageInterlaceMethodProgressive = 8
+} JNGImageInterlaceMethod;
+
+typedef enum {
+	JNGImageCompressionMethodIDAT = 0,
+	JNGImageCompressionMethodJDAA = 8
+} JNGImageCompressionMethod;
+
 @interface JNGImageChunkJHDR : NSObject {
 	JNGImageColorType colorType;
+	JNGImageInterlaceMethod imageInterlaceMethod;
+	JNGImageCompressionMethod imageCompressionMethod;
+	
 	unsigned int width, height;
-	unsigned char imageSampleDepth, imageCompressionMethod, imageInterlaceMethod;
+	unsigned char imageSampleDepth;
 	unsigned char alphaSampleDepth, alphaCompressionMethod, alphaFilterMethod, alphaInterlaceMethod;
 }
 
 - (id)initWithData:(NSData *)data;
 
 @property (nonatomic, assign) JNGImageColorType colorType;
+@property (nonatomic, assign) JNGImageInterlaceMethod imageInterlaceMethod;
+@property (nonatomic, assign) JNGImageCompressionMethod imageCompressionMethod;
 @property (nonatomic, assign) unsigned int width, height;
-@property (nonatomic, assign) unsigned char imageSampleDepth, imageCompressionMethod, imageInterlaceMethod;
+@property (nonatomic, assign) unsigned char imageSampleDepth;
 @property (nonatomic, assign) unsigned char alphaSampleDepth, alphaCompressionMethod, alphaFilterMethod, alphaInterlaceMethod;
 
 @end

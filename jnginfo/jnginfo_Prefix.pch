@@ -1,0 +1,7 @@
+
+// prefix header for 'jnginfo' command line tool
+
+//#import "AppKit.h"
+
+#import <Cocoa/Cocoa.h>
+#import "Debugging.h"
