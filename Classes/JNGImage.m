@@ -86,39 +86,18 @@ static JNGImageCache *cache = nil;
 
 // Returns a copy of the given image, adding an alpha channel
 - (UIImage *)imageWithAlpha:(UIImage *)img {
-	if(img == nil) return nil;
-	
     CGImageRef imageRef = img.CGImage;
     size_t width = CGImageGetWidth(imageRef);
     size_t height = CGImageGetHeight(imageRef);
-	size_t bytesPerPixel = 4;
-    size_t bitsPerComponent = 8;
-	size_t bytesPerRow = width * bytesPerPixel;
-	size_t imageSize;
-	
-	// round up bytesPerRow to nearest multiple of 16
-	if(bytesPerRow % 16)
-		bytesPerRow += 16 - bytesPerRow % 16;
-	
-	imageSize = bytesPerRow * height;
-	
-	LOG(@"bytesPerRow: %d, imageSize: %d", bytesPerRow, imageSize);
-	
-	CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB(); //CGImageGetColorSpace(imageRef);
-	
-	void *data = calloc(imageSize, 1);
-	if(data == nil) {
-		LOG(@"memory allocation error");
-		return nil;
-	}
-	
-    CGContextRef offscreenContext = CGBitmapContextCreate(data,
+    
+    // The bitsPerComponent and bitmapInfo values are hard-coded to prevent an "unsupported parameter combination" error
+    CGContextRef offscreenContext = CGBitmapContextCreate(NULL,
                                                           width,
                                                           height,
-                                                          bitsPerComponent,
-                                                          bytesPerRow,
-                                                          colorspace,
-                                                          kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast);
+                                                          8,
+                                                          0,
+                                                          CGImageGetColorSpace(imageRef),
+                                                          kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);
     
     // Draw the image into the context and retrieve the new image, which will now have an alpha layer
     CGContextDrawImage(offscreenContext, CGRectMake(0, 0, width, height), imageRef);
@@ -126,11 +105,9 @@ static JNGImageCache *cache = nil;
     UIImage *imageWithAlpha = [UIImage imageWithCGImage:imageRefWithAlpha];
     
     // Clean up
-	CGColorSpaceRelease(colorspace);
     CGContextRelease(offscreenContext);
     CGImageRelease(imageRefWithAlpha);
-    free(data);
-	
+    
     return imageWithAlpha;
 }
 
